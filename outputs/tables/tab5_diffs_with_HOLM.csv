@@ -1,0 +1,6 @@
+indicator,diff_pp,lwr_pp,upr_pp,p_raw,p_holm,sig_holm
+smoker,-3.12,-3.83,-2.44,1.38e-18,6.91e-18,Sim
+obesity,-7.14,-9.53,-4.76,4.42e-09,1.77e-08,Sim
+hypertension,-1.74,-2.6,-0.85,9.72e-05,9.72e-05,Sim
+diabetes,-1.13,-1.66,-0.57,4.83e-05,9.65e-05,Sim
+poor_health,-1.16,-1.63,-0.74,3.24e-07,9.71e-07,Sim

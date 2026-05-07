@@ -1,0 +1,5 @@
+indicator,n_v,n_p,model,total_diff_pp,composition_pp,coefficients_pp,pct_comp
+smoker,36342,68213,4_covs PNS urbano,-1.75,0.36,-2.11,-20.5
+hypertension,36342,67109,4_covs PNS urbano,2.5,1.81,0.69,72.2
+diabetes,36342,64709,4_covs PNS urbano,0.52,1.25,-0.73,241.1
+poor_health,36342,68213,4_covs PNS urbano,0.09,-1.65,1.74,-1741.9
