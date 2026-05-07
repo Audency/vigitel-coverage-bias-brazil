@@ -1,0 +1,30 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "Vigitel-PNS coverage and bias decomposition pipeline",
+  "description": "Reproducible R pipeline for methodological study of selection bias in Brazil's Vigitel telephone surveillance system, including Fairlie decomposition, response propensity modelling, and ADEMP simulation framework.",
+  "version": "0.9",
+  "datePublished": "2026-05-07",
+  "license": "https://spdx.org/licenses/MIT",
+  "programmingLanguage": [{"@type": "ComputerLanguage", "name": "R", "version": "4.5.1"}],
+  "softwareRequirements": [
+    "data.table", "fst", "srvyr", "ranger", "yardstick", "boot", "segmented",
+    "PNSIBGE", "PNADcIBGE", "ggplot2"
+  ],
+  "author": [
+    {"@type": "Person", "givenName": "Audêncio", "familyName": "Victor",
+     "email": "audenciovictor@usp.br",
+     "affiliation": {"@type": "Organization", "name": "Universidade de São Paulo"}},
+    {"@type": "Person", "givenName": "Carla", "familyName": "Ferreira do Nascimento",
+     "affiliation": {"@type": "Organization", "name": "Universidade Federal da Bahia"}},
+    {"@type": "Person", "givenName": "Bruna Suellen", "familyName": "Breternitz",
+     "affiliation": {"@type": "Organization", "name": "Hospital Israelita Albert Einstein"}},
+    {"@type": "Person", "givenName": "Michele", "familyName": "Lacerda Pereira Ferrer",
+     "affiliation": {"@type": "Organization", "name": "Hospital Israelita Albert Einstein"}},
+    {"@type": "Person", "givenName": "Étienne", "familyName": "Larissa Duim",
+     "affiliation": {"@type": "Organization", "name": "Hospital Israelita Albert Einstein"}}
+  ],
+  "keywords": ["public health", "surveillance", "telephone survey", "selection bias",
+                "mode effects", "Vigitel", "PNS", "Brazil", "Fairlie", "ADEMP"],
+  "funder": {"@type": "Organization", "name": "PROADI-SUS / Hospital Israelita Albert Einstein"}
+}

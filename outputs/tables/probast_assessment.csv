@@ -1,0 +1,18 @@
+Domain,Item,Judgment,Risk_of_bias
+Participants,1.1 Appropriate data sources,Y,Low
+Participants,1.2 Appropriate inclusions/exclusions,Y,Low
+Predictors,2.1 Predictors defined similarly,Y,Low
+Predictors,2.2 Assessed without outcome knowledge,Y,Low
+Predictors,2.3 Available at use time,Y,Low
+Outcome,3.1 Outcome appropriately determined,Y,Low
+Outcome,3.2 Standard outcome definition,Y,Low
+Outcome,3.3 Assessed without predictor knowledge,N,High
+Analysis,4.1 Reasonable n with outcome,Y,Low
+Analysis,4.2 Continuous/categorical handled,Y,Low
+Analysis,4.3 All enrolled in analysis,Y,Low
+Analysis,4.4 Missing data handled,PY,Unclear
+Analysis,4.5 No univariate selection,Y,Low
+Analysis,4.6 Complexities accounted for,PY,Unclear
+Analysis,4.7 Performance measures evaluated,Y,Low
+Analysis,4.8 Overfitting/optimism accounted for,PN,High
+Analysis,4.9 Predictors-weights correspond,Y,Low

@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+title: >-
+  Coverage, representativeness, and selection bias in telephone-based health
+  surveillance during the decline of landline telephony — analytical pipeline
+message: >-
+  If you use this software in your research, please cite the associated
+  manuscript and this dataset.
+type: software
+authors:
+  - family-names: Victor
+    given-names: Audêncio
+    affiliation: School of Public Health, Universidade de São Paulo
+    email: audenciovictor@usp.br
+  - family-names: Ferreira do Nascimento
+    given-names: Carla
+    affiliation: Universidade Federal da Bahia
+  - family-names: Breternitz
+    given-names: Bruna Suellen
+    affiliation: Hospital Israelita Albert Einstein – PROADI-SUS
+  - family-names: Lacerda Pereira Ferrer
+    given-names: Michele
+    affiliation: Hospital Israelita Albert Einstein – PROADI-SUS
+  - family-names: Larissa Duim
+    given-names: Étienne
+    affiliation: Hospital Israelita Albert Einstein – PROADI-SUS
+identifiers:
+  - type: url
+    value: https://github.com/audencioVictor/vigitel-coverage-bias
+  - type: doi
+    value: 10.5281/zenodo.PENDING
+abstract: >-
+  Reproducible R pipeline (single-script) for the methodological study
+  evaluating coverage, representativeness, and selection bias in Brazil's
+  telephone-based health surveillance system (Vigitel) compared to the
+  National Health Survey (PNS), using the Fairlie 2005 decomposition,
+  response propensity modelling, and ADEMP simulation framework.
+keywords:
+  - public-health
+  - surveillance
+  - telephone-survey
+  - selection-bias
+  - mode-effects
+  - Vigitel
+  - PNS
+  - Brazil
+  - Fairlie-decomposition
+  - ADEMP
+license: MIT
+version: '0.9'
+date-released: '2026-05-07'
+references:
+  - type: article
+    title: >-
+      Coverage, representativeness, and selection bias in telephone-based
+      health surveillance during the decline of landline telephony: a
+      Brazilian case study with implications for the Americas
+    authors:
+      - family-names: Victor
+        given-names: Audêncio
+      - family-names: Ferreira do Nascimento
+        given-names: Carla
+      - family-names: Breternitz
+        given-names: Bruna Suellen
+      - family-names: Lacerda Pereira Ferrer
+        given-names: Michele
+      - family-names: Larissa Duim
+        given-names: Étienne
+    year: 2026
+    journal: BMC Public Health
+    notes: Submitted
