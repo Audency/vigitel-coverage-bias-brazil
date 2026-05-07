@@ -1,3 +1,0 @@
-model,AUC_mean,AUC_sd,Brier_manual,Brier_random_ref
-Logística,0.513,0.012,0.2037,0.25
-Random Forest,0.591,0.009,0.1996,0.25

@@ -1,9 +1,0 @@
-indicator,n_v,n_p,model,total_diff_pp,composition_pp,coefficients_pp,pct_comp
-smoker,36779,88531,"3_covs (idade,sexo,educ)",-1.89,-0.12,-1.77,6.1
-hypertension,36779,86862,"3_covs (idade,sexo,educ)",2.66,0.47,2.19,17.5
-diabetes,36779,82349,"3_covs (idade,sexo,educ)",0.76,0.12,0.64,15.6
-poor_health,36779,88531,"3_covs (idade,sexo,educ)",-0.22,-0.05,-0.17,23.2
-smoker,36342,88522,4_covs (+ raça),-1.93,0.06,-1.99,-3.2
-hypertension,36342,86853,4_covs (+ raça),2.57,1.54,1.03,60
-diabetes,36342,82342,4_covs (+ raça),0.69,1.12,-0.43,162
-poor_health,36342,88522,4_covs (+ raça),-0.23,-1.9,1.67,833.8
