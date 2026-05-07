@@ -1,5 +1,0 @@
-indicator,total_pp,total_lwr,total_upr,composition_pp,comp_lwr,comp_upr,coefficients_pp,coef_lwr,coef_upr,R,method
-smoker,-1.89,-2.59,-1.25,-0.12,-0.28,0.06,-1.77,-2.58,-1.1,500,boot BCa (z0-corrected)
-hypertension,2.66,1.69,3.43,0.47,0.1,0.94,2.19,1.35,2.95,500,boot BCa (z0-corrected)
-diabetes,0.76,0.27,1.23,0.12,-0.05,0.3,0.64,0.15,1.09,500,boot BCa (z0-corrected)
-poor_health,-0.22,-0.66,0.27,-0.05,-0.16,0.04,-0.17,-0.64,0.34,500,boot BCa (z0-corrected)

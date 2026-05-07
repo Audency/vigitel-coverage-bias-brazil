@@ -1,6 +1,0 @@
-indicator,p_vigitel,p_pns,diff_pp,lwr_pp,upr_pp,method
-smoker,9.7,12.81,-3.12,-3.82,-2.41,design-aware (Rao-Wu)
-obesity,20.24,27.38,-7.14,-9.47,-4.8,design-aware (Rao-Wu)
-hypertension,25.84,27.58,-1.74,-2.63,-0.85,design-aware (Rao-Wu)
-diabetes,8.07,9.19,-1.13,-1.67,-0.58,design-aware (Rao-Wu)
-poor_health,4.9,6.06,-1.16,-1.64,-0.68,design-aware (Rao-Wu)
