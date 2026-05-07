@@ -1,0 +1,31 @@
+# Microdata raw — não versionar (tamanho + restrições legais)
+data/raw/
+data/processed/
+
+# Outputs binários
+outputs/models/
+
+# R artifacts
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+.Renviron
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Renv (manter renv.lock; ignorar cache)
+renv/library/
+renv/staging/
+renv/python/
+renv/sandbox/
+
+# Temporários
+*.tmp
+*~
