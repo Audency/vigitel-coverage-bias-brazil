@@ -1,0 +1,5 @@
+indicador,rotulo,termo,beta,p_int,p_int_holm
+smoking,Tabagismo atual,inqueritoVigitel:sexFeminino,0.01371719575452769,0.8815330458635933,1
+hypertension,Hipertensão diagnosticada,inqueritoVigitel:sexFeminino,0.08799264082334868,0.14190968721747124,0.567638748869885
+diabetes,Diabetes diagnosticado,inqueritoVigitel:sexFeminino,-0.022374078766162035,0.8086409745424661,1
+poor_health,Autoavaliação ruim de saúde,inqueritoVigitel:sexFeminino,0.14717818988503142,0.2502208873848472,0.7506626621545416

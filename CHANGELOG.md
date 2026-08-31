@@ -1,8 +1,48 @@
 # CHANGELOG
 
-## v0.7 (2026-05-07) — refinamentos pós-revisão Lancet
+## v2.0 (2026-08-31) — novo desenho: partição do gap e simulação ADEMP
 
-Sintetizando 5 pareceres de revisores estilo Lancet (Senior Editor, Methodologist, Equity, Skeptic, Regional Fit). Mudanças implementadas:
+Redesenho completo do estudo. O pipeline em três componentes com escopo 2006–2023
+foi arquivado em `archive_v1/`; o `main` passa a ser o desenho pareado de 2019.
+
+### Desenho
+
+- **Escopo pareado 2019**: Vigitel 2019 × PNS 2019, 26 capitais + DF, adultos ≥18 anos.
+  A PNS 2019 é a única edição com módulo de posse de telefone, o que permite estimar
+  o viés de não cobertura **inteiramente dentro da PNS**, sem depender do Vigitel.
+- **Partição do gap** em componente de não cobertura e resíduo (Tabela 4). O resíduo
+  não é chamado de "efeito de modo": absorve conjuntamente modo de coleta,
+  autorrelato, instrumento, não resposta e calibragem, e este desenho não os separa.
+- **Simulação ADEMP**, 5 cenários de quadro amostral × região × indicador, 1.000
+  réplicas por célula, semente fixa (Tabela 5, Figura 2).
+- **Validação externa da previsão** contra a adoção real do cadastro duplo pelo
+  Vigitel em 2023 (Tabela 6).
+- Bootstrap de Rao-Wu sobre o desenho amostral, 1.000 réplicas, para todos os
+  intervalos das quantidades derivadas.
+
+### Resultados principais
+
+- 60,3% dos adultos das 27 capitais não tinham telefone fixo em 2019.
+- O componente de não cobertura excede o gap observado ou tem sinal oposto a ele em
+  todos os quatro indicadores; para hipertensão, +6,33 pp de viés de cobertura são
+  compensados por −4,25 pp de resíduo.
+- Vício relativo de Cochran acima de 0,40 nas 24 células indicador × domínio.
+- REQM médio cai de 1,65 pp (só fixo) para 0,68 pp (cadastro duplo); além do duplo,
+  o ganho é de centésimos.
+- A transição real de 2023 concorda em sinal com a previsão em 3 dos 4 indicadores.
+
+### Infraestrutura
+
+- Pipeline em 13 scripts numerados, executados por `run_all.R`, parando no primeiro erro.
+- **Versão em inglês** de tabelas, figuras e suplemento (`run_en.R`), lida dos mesmos
+  objetos derivados: nada é recalculado, só rótulos e formatação numérica mudam.
+- `tools/traduz_docx.py`: traduz as tabelas e legendas dentro do `.docx` sem
+  redigitar nenhum número; aborta se faltar tradução de qualquer segmento.
+- Microdados (9,4 GB) permanecem fora do repositório.
+
+## v0.7 (2026-05-07) — refinamentos pós-revisão editorial interna
+
+Sintetizando 5 pareceres de uma revisão editorial interna simulada (Senior Editor, Methodologist, Equity, Skeptic, Regional Fit). Mudanças implementadas:
 
 ### Análise
 
@@ -16,12 +56,12 @@ Sintetizando 5 pareceres de revisores estilo Lancet (Senior Editor, Methodologis
 
 ### Manuscrito
 
-- **Plain Language Summary** adicionada (Lancet PLP requirement)
+- **Plain Language Summary** adicionada (resumo em linguagem simples)
 - **Título atualizado**: "...a Brazilian case study with implications for the Americas"
 - **Linguagem causal moderada**: "driver", "explain", "attributable" → "statistical contributor", "decomposed into"
 - **H1 sinalizada como exploratória post-hoc** quando contradicta pelos dados (floor effect)
 - **Limitações expandidas**: 7 → 5 limitações reorganizadas com sensibilidades reportadas
-- **Confluence Lancet** verificada: Summary 5 seções, Research in Context, Findings antes Discussion, Contributors/Declarations/Data sharing
+- **Estrutura do artigo** verificada: Summary 5 seções, Research in Context, Findings antes Discussion, Contributors/Declarations/Data sharing
 
 ### Reprodutibilidade
 
@@ -40,9 +80,9 @@ Sintetizando 5 pareceres de revisores estilo Lancet (Senior Editor, Methodologis
 - [ ] Versão portuguesa do Summary + Implications como anexo (LRH-Americas)
 - [ ] Zenodo DOI ativo antes de submissão
 
-## v0.6 (2026-05-07) — primeira versão Lancet style
+## v0.6 (2026-05-07) — primeira versão em formato de artigo
 
-Convertido do v0.5 (formato BMC/RBE) para Lancet:
+Convertido do v0.5 para o formato de artigo:
 - Summary com Background/Methods/Findings/Interpretation/Funding
 - Research in Context panel adicionado
 - Findings antes de Discussion
