@@ -1,5 +1,10 @@
 # Landline non-coverage bias in Vigitel estimates
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square)](LICENSE)
+[![R](https://img.shields.io/badge/R-4.5%2B-276DC3?style=flat-square&logo=r&logoColor=white)](https://www.r-project.org/)
+[![Reproducible](https://img.shields.io/badge/reproducible-fixed%20seed-brightgreen?style=flat-square)](#reproducing)
+[![Status](https://img.shields.io/badge/status-unpublished%20manuscript-blue?style=flat-square)](#)
+
 Quantifies the non-coverage bias of **Vigitel** — Brazil's landline-telephone
 surveillance survey — using the **PNS 2019** as a probabilistic reference,
 partitions the prevalence gap into a non-coverage component and a residual, and
