@@ -1,238 +1,199 @@
-<div align="center">
+# Landline non-coverage bias in Vigitel estimates
 
-# 📞 Vigitel Coverage & Selection Bias
+Quantifies the non-coverage bias of **Vigitel** — Brazil's landline-telephone
+surveillance survey — using the **PNS 2019** as a probabilistic reference,
+partitions the prevalence gap into a non-coverage component and a residual, and
+simulates five sampling-frame scenarios under the ADEMP framework.
 
-### Coverage and selection bias in telephone-based health surveillance during landline decline
+Every number in this repository comes from code that ran over the downloaded
+microdata. Nothing is quoted from the literature or from memory.
 
-**A Brazilian case study with implications for the Americas (2006–2023)**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![R](https://img.shields.io/badge/R-4.5%2B-276DC3?style=flat-square&logo=r)](https://www.r-project.org/)
-[![Reproducible](https://img.shields.io/badge/Reproducible-✓-brightgreen?style=flat-square)]()
-[![Open Science](https://img.shields.io/badge/Open%20Science-OSF-green?style=flat-square)](https://osf.io/)
-[![Status](https://img.shields.io/badge/Status-Submitted-blue?style=flat-square)]()
-[![Submission](https://img.shields.io/badge/Target-BMC%20Public%20Health-9F2B68?style=flat-square)]()
-[![DOI](https://img.shields.io/badge/DOI-pending-lightgrey?style=flat-square)]()
-
-</div>
+> **Status:** manuscript in preparation · Vigitel 2019 × PNS 2019 · 26 state
+> capitals + Federal District · adults aged 18 years or over
 
 ---
 
-## 🎯 At a glance
+## Key findings
 
-> **Vigitel underestimates 5/5 priority NCD indicators relative to PNS.**
-> For self-reported smoking, ≥95% of the gap is mode-driven (not population coverage).
-> The obesity gap is 4× larger in women than men.
+**In 2019, 60.3% of adults in the 27 capitals had no landline** — the share of the
+population that Vigitel's sampling frame could not reach at all.
 
-| | |
-|---|---|
-| **📊 Data**     | Vigitel 2006–2023 (n=833,217) · PNS 2019 (n=88,531) · PNAD-TIC 2016–2023 |
-| **🎯 Findings** | 5/5 indicators underestimated (all *p*<0.001 after Holm correction) |
-| **🔬 Method**   | Fairlie 2005 decomposition · BCa bootstrap CIs · ADEMP simulation |
-| **♿ Design**   | Okabe-Ito colorblind-friendly figures · gtsummary tables |
-| **🌎 Scope**    | Brazil case study with implications for BRFSS, ENSANUT, ENFR, ENS, ENSIN |
+**The observed differences are small.** Vigitel minus PNS, in percentage points
+(Table 2):
 
----
-
-## 🌟 Key results
-
-<table>
-<tr>
-<th>Domain</th>
-<th>Result</th>
-</tr>
-<tr>
-<td><b>📉 Landline decline (2016–2023)</b></td>
-<td>National AAPC −14·3%/year · Southeast/North ratio = 4·2 in 2023</td>
-</tr>
-<tr>
-<td><b>📊 Vigitel underestimation</b></td>
-<td>Smoking −3·1pp · Obesity −7·1pp · Hypertension −1·7pp · Diabetes −1·1pp · Self-rated health −1·2pp</td>
-</tr>
-<tr>
-<td><b>🔍 Smoking decomposition</b></td>
-<td>−1·77pp <i>mode-driven</i> [BCa 95%CI −2·58, −1·10]; composition NS [−0·28, +0·06]</td>
-</tr>
-<tr>
-<td><b>♀♂ Sex differential</b></td>
-<td>Obesity gap −11·7pp in women vs −2·8pp in men (4× larger; mode-related self-report bias)</td>
-</tr>
-<tr>
-<td><b>🎲 Multimodal Monte Carlo</b></td>
-<td>SE drops 12-fold from S0 (landline-only) to S1 (dual-frame); diminishing returns thereafter</td>
-</tr>
-</table>
-
----
-
-## 🗺️ Analytical pipeline
-
-```mermaid
-graph LR
-    A[Vigitel<br/>2006–2023<br/>n=833,217] --> H[Harmonisation<br/>5 priority indicators]
-    B[PNS 2019<br/>n=88,531] --> H
-    C[PNAD-TIC<br/>2016–2023] --> D[Coverage trends<br/>AAPC + Holm z-test]
-    H --> E[Vigitel × PNS<br/>Bootstrap R=1000<br/>Holm correction]
-    H --> F[Response propensity<br/>Logistic + Random Forest<br/>TRIPOD+AI / PROBAST]
-    H --> G[Fairlie decomposition<br/>BCa bootstrap R=500<br/>3 specifications]
-    H --> I[ADEMP simulation<br/>4 multimodal scenarios<br/>R=1000 replicates]
-    D --> J[📄 Manuscript<br/>BMC Public Health]
-    E --> J
-    F --> J
-    G --> J
-    I --> J
-
-    style A fill:#0072B2,color:#fff
-    style B fill:#D55E00,color:#fff
-    style C fill:#009E73,color:#fff
-    style J fill:#1F3A5F,color:#fff
-```
-
----
-
-## 👥 Authors
-
-| Author | Affiliation | Role |
-|---|---|---|
-| **Audêncio Victor** *(joint first author · corresponding)* | School of Public Health, Universidade de São Paulo & Hospital Israelita Albert Einstein | Conception, analysis lead |
-| **Carla Ferreira do Nascimento** *(joint first author)* | Universidade Federal da Bahia | Conception, manuscript drafting |
-| **Bruna Suellen Breternitz** | Hospital Israelita Albert Einstein & Universidade Presbiteriana Mackenzie | Machine learning component |
-| **Michele Lacerda Pereira Ferrer** | Hospital Israelita Albert Einstein & Faculdade de Ciências Médicas da Santa Casa de São Paulo | Indicator harmonisation |
-| **Étienne Larissa Duim** | School of Public Health, Universidade de São Paulo & Hospital Israelita Albert Einstein | Simulation methodology |
-
-📧 **Correspondence:** [audenciovictor@usp.br](mailto:audenciovictor@usp.br)
-💰 **Funding:** Programa de Apoio ao Desenvolvimento Institucional do SUS (PROADI–SUS)
-
----
-
-## 🗂️ Repository structure
-
-```
-vigitel-coverage-bias-brazil/
-├── 📄 pipeline_completo.R           Single-file consolidated pipeline (694 lines)
-├── ⚙️  config.R                      Paths, study constants, Brazilian regions
-├── 📂 R/                            Modular scripts
-│   ├── 00_install_packages.R        Idempotent dependency install
-│   ├── 01_load_vigitel.R            Vigitel CSV → fst (1 GB → 35 MB)
-│   ├── 02_download_pns.R            PNS via PNSIBGE
-│   ├── 03_download_pnad_tic.R       PNAD-TIC via PNADcIBGE
-│   ├── 04_harmonize_indicators.R    Cross-source harmonisation
-│   ├── 06_component2_vigitel_pns.R  Vigitel × PNS bootstrap comparison
-│   ├── 07_component3_propensity.R   Logistic + Random Forest
-│   └── 09_run_all.R                 Orchestrator
-├── 📂 manuscript/
-│   ├── Manuscript_BMC_Public_Health_v1.3_FINAL.docx
-│   └── Presentation_v0.8.pptx       Companion slides
-└── 📂 outputs/
-    ├── 📊 figures/   6 publication-ready PNG (Okabe-Ito palette, 300 dpi)
-    └── 📋 tables/    7 docx tables (gtsummary + flextable)
-```
-
----
-
-## 📊 Data sources
-
-All datasets are public-domain Brazilian government microdata; the raw files are *not* committed to this repository (see `.gitignore`). The pipeline downloads them automatically.
-
-| Source | Period | n | Variable focus | Access |
+| Indicator | Vigitel | PNS | Δ (95% CI) | p (Holm) |
 |---|---|---|---|---|
-| **Vigitel** (Ministry of Health) | 2006–2023 | 833,217 adults ≥18 | Landline-based RDD-CATI; 27 capitals + DF | [gov.br/saude](https://www.gov.br/saude/) |
-| **PNS** (IBGE) | 2019 | 88,531 adults ≥18 | In-person household survey; national | [ibge.gov.br](https://www.ibge.gov.br/) via `PNSIBGE` |
-| **PNAD-TIC** (IBGE) | 2016–2023 | regional aggregates | Telephony coverage | [ibge.gov.br](https://www.ibge.gov.br/) via `PNADcIBGE` |
+| Current smoking | 9.84 | 11.42 | −1.58 (−2.45, −0.71) | 0.001 |
+| Diagnosed hypertension | 24.52 | 22.44 | +2.08 (1.02, 3.13) | <0.001 |
+| Diagnosed diabetes | 7.45 | 7.65 | −0.21 (−0.82, 0.41) | 0.51 |
+| Poor self-rated health | 4.82 | 4.45 | +0.37 (−0.15, 0.90) | 0.33 |
+
+**The non-coverage bias is not small — and that is the point.** Estimated entirely
+*within* the PNS, it exceeds the observed gap or runs against it (Table 4):
+
+| Indicator | Total gap | Non-coverage component (95% CI) | Residual (95% CI) |
+|---|---|---|---|
+| Current smoking | −1.58 | −1.84 (−2.63, −1.05) | +0.26 (−0.95, 1.47) |
+| Diagnosed hypertension | +2.08 | **+6.33 (5.37, 7.30)** | −4.25 (−5.83, −2.68) |
+| Diagnosed diabetes | −0.21 | **+1.99 (1.42, 2.56)** | −2.19 (−3.13, −1.25) |
+| Poor self-rated health | +0.37 | −0.60 (−1.03, −0.18) | +0.97 (0.28, 1.67) |
+
+A small published gap is therefore **not** evidence of a small coverage problem:
+for hypertension a +6.33 pp coverage bias is offset by a −4.25 pp residual. The two
+parts nearly cancel, and the survey looks accurate for the wrong reason.
+
+**Cochran's relative bias exceeds the 0.40 threshold in all 24 indicator × domain
+cells** (Table 3): the nominal 95% coverage of the intervals degrades everywhere,
+not only in the regions with the sparsest landline coverage.
+
+**Post-stratification helps unevenly** — it removes 14% of the coverage bias for
+smoking and 90% for diabetes (Table 4). Calibration on age, education and sex
+cannot fix what it does not measure.
+
+**A dual frame captures almost the whole available gain** (Table 5, Figure 2). Mean
+RMSE across regions and indicators, by scenario:
+
+| S0 landline only | S1 mobile only | S2 dual frame | S3 triple frame | S4 full multimodal |
+|---|---|---|---|---|
+| 1.65 pp | 0.70 pp | 0.68 pp | 0.67 pp | 0.64 pp |
+
+The worst single cell falls from 4.83 pp (smoking, North, landline only) to 1.77 pp
+under a dual frame. Everything beyond the dual frame buys hundredths of a point.
+
+**The prediction survives contact with the real transition.** When Vigitel adopted
+a dual frame in 2023, the direction of change agreed with the 2019 prediction for
+three of the four indicators (Pearson r = 0.93 over four points — descriptive, not
+a test; Table 6).
 
 ---
 
-## 🚀 Reproducible run
+## Figures
 
-### Prerequisites
+**Figure 1** — Prevalence difference between Vigitel 2019 and PNS 2019, overall and
+by sex (`figure1_sex`).
 
-- 💻 R ≥ 4.5
-- 💾 ~3.5 GB free disk (microdata download)
-- 🌐 Internet connection (first run only)
+![Figure 1](output/figures_en/figure1_sex.png)
 
-### Quick start
+**Figure 2** — RMSE by sampling-frame scenario and macro-region. The whole gain is
+between S0 and S1/S2.
 
-```r
-# Clone
-git clone https://github.com/Audency/vigitel-coverage-bias-brazil.git
-cd vigitel-coverage-bias-brazil
+![Figure 2](output/figures_en/figure2.png)
 
-# Run full pipeline (~15–25 min on first execution)
-Rscript -e 'PROJ_ROOT <- getwd(); source("pipeline_completo.R"); run_all()'
-```
+**Gap partition** — the observed difference next to its two parts. The
+non-coverage component is not a fraction of the gap. Produced by the pipeline as
+`figure1`; not in the current manuscript draft.
 
-### Step by step (recommended)
-
-```r
-source("pipeline_completo.R")
-
-step_install_packages()          # ~5–10 min, idempotent
-step_load_vigitel()              # ~1–2 min  (decompresses 1 GB CSV)
-step_download_pns(2019)          # ~1–2 min  (28 MB zip + 455 MB parsing)
-step_harmonize()                 # ~30 s
-step_component1_coverage()       # ~30 s
-step_component2_vigitel_pns()    # ~2–3 min (bootstrap R=1000)
-step_component3_propensity()     # ~5–10 min (Random Forest + GLM × 5 folds)
-step_component4_fairlie()        # ~3–5 min (BCa bootstrap)
-step_component4_monte_carlo()    # ~1–2 min (R=1000 × 4 scenarios)
-```
+![Gap partition](output/figures_en/figure1.png)
 
 ---
 
-## ✅ Validation against published estimates
+## Outputs
 
-> Our weighted estimates match the official Ministry of Health Vigitel 2019 figures within **±0·1 percentage point** for the four most prominent indicators.
-
-| Indicator | Our estimate | Published | Δ (pp) | Source |
-|---|---:|---:|---:|---|
-| Smoking (Vigitel) | 9·7% | 9·8% | **−0·1** ✅ | Vigitel Brasil 2019 |
-| Obesity self-report (Vigitel) | 20·2% | 20·3% | **−0·1** ✅ | Vigitel Brasil 2019 |
-| Overweight (Vigitel) | 55·5% | 55·4% | **+0·1** ✅ | Vigitel Brasil 2019 |
-| Physical activity (Vigitel) | 38·1% | 39·0% | **−0·9** ✅ | Vigitel Brasil 2019 |
-| Smoking (PNS) | 12·8% | 12·6% | **+0·2** ✅ | Stopa et al. 2020 |
-| Obesity measured (PNS) | 27·4% | 26·8% | **+0·6** ✅ | Stopa et al. 2020 |
-
-Design-aware variance estimation (Rao-Wu rescaled bootstrap for Vigitel; replicate weights for PNS) yields qualitatively identical inference.
-
----
-
-## 📋 Reporting guidelines followed
-
-| Guideline | Component |
+| Where | What |
 |---|---|
-| **STROBE** | Observational/descriptive components |
-| **AAPOR Standard Definitions** (9th ed.) | Response-rate metrics |
-| **TRIPOD+AI** (Collins 2024) | Predictive component |
-| **PROBAST** (Wolff 2019) | Risk-of-bias assessment |
-| **ADEMP** (Morris 2019) | Monte-Carlo simulation |
-| **Open Science Framework** | Pre-registration before confirmatory analyses |
+| `output/tables_en/` | Tables 1–6 and S1–S7 in English — `.docx` and `.html`, plus the underlying data in `*_dados.rds` |
+| `output/tables/` | The same tables in Portuguese |
+| `output/figures_en/` | Figures 1–3 and S1–S3 in English — `.pdf` (vector) and `.png` (300 dpi, 180 mm) |
+| `output/figures/` | The same figures in Portuguese |
+| `output/supplement/` | Assembled supplementary material, `supplementary_material_en.docx` and `material_suplementar.docx` |
+| `output/logs/` | Provenance: external-validation checks, full simulation grid, session info, package versions |
+| `manuscript/` | Current draft, with tables and figures already in English |
 
 ---
 
-## 📑 Citation
+## Reproducing
 
-> Victor A, Ferreira do Nascimento C, Breternitz BS, Lacerda Pereira Ferrer M, Larissa Duim É.
-> *Coverage and selection bias in telephone-based health surveillance during landline decline: a Brazilian case study with implications for the Americas (2006–2023).*
-> Submitted to **BMC Public Health**, 2026.
+Every script starts with `source(here::here("R", "00_setup.R"))`. Run in order, or
+`Rscript run_all.R`.
 
-A `CITATION.cff` file is provided for automatic citation generation. **Zenodo DOI** will be added upon submission.
+| # | Script | Produces |
+|---|---|---|
+| 00 | `R/00_setup.R` | Packages, seed (20260803), study parameters, palette, `output/logs/sessioninfo.txt` |
+| 01 | `R/01_download.R` | Microdata into `data-raw/` (PNS, PNAD-C ICT, Census via SIDRA); checks that the Vigitel files are present |
+| 02 | `R/02_harmoniza.R` | Harmonised `data/derivado/*.rds` and the item-equivalence dictionary (→ Table S1) |
+| 03 | `R/03_desenho.R` | `srvyr` design objects, validated against the published official prevalences |
+| 04 | `R/04_descritivas.R` | Sample characteristics with standardised differences (→ Table 1) |
+| 05 | `R/05_prevalencias.R` | Prevalences, Δ, prevalence ratios, sex × survey interaction, Holm correction, age standardisation (→ Table 2) |
+| 06 | `R/06_particao.R` | Non-coverage bias and the gap partition (→ Tables 3 and 4) |
+| 07 | `R/07_bootstrap.R` | Rao-Wu bootstrap over the design, 1,000 replicates |
+| 08 | `R/08_simulacao.R` | ADEMP simulation, 5 scenarios × region × indicator, 1,000 replicates per cell |
+| 09 | `R/09_validacao_2023.R` | Confronts the prediction with the real 2023 dual-frame transition (→ Table 6) |
+| 10–12 | `R/10_tabelas.R`, `R/11_figuras.R`, `R/12_suplemento.R` | Tables, figures and supplement (Portuguese) |
+| 13 | `R/13_manuscrito.R` | Narrated results, every number interpolated from the saved objects |
+
+### English outputs
+
+The three scripts below read the same objects from `data/derivado/` and **recompute
+nothing** — they translate labels, notes and numeric formatting. They require the
+main pipeline to have run.
+
+```sh
+Rscript run_en.R     # R/10_tabelas_en.R → R/11_figuras_en.R → R/12_suplemento_en.R
+```
+
+`R/labels_en.R` holds the PT→EN dictionaries and the English number formatters.
+
+### Manuscript translation
+
+`tools/traduz_docx.py` translates the tables and the table/figure captions inside a
+`.docx`, preserving structure, styles, numbering and footnote markers. Numbers are
+never retyped — only the notation changes (decimal comma → point, thousands
+separator → comma, `" a "` → `" to "`). It aborts without writing if any text
+segment is missing from `tools/traducoes_tabelas.py`.
+
+```sh
+python3 tools/traduz_docx.py "<file>.docx" --dry-run
+python3 tools/traduz_docx.py "<file>.docx"
+```
 
 ---
 
-## 📜 License
+## Data sources
 
-This work is released under the [**MIT License**](LICENSE) for code. The original microdata are governed by the licences of the Brazilian Ministry of Health and IBGE.
+| Source | Year | How it is obtained |
+|---|---|---|
+| PNS | 2019 | `PNSIBGE::get_pns()` — the only edition with a telephone-ownership module |
+| Vigitel | 2019, 2023 | **manual** — no API; see `R/01_download.R` for the expected files in `data-raw/vigitel/` |
+| PNAD Contínua ICT | 2019 | `PNADcIBGE::get_pnadc()` — telephone-ownership parameters for the simulation |
+| Census | 2022 | `sidrar::get_sidra()` — adult population by sex, age group and capital, used only as the standard population for direct age standardisation |
+
+`data-raw/` and `data/` are git-ignored (9.4 GB). The original microdata are never
+edited: all transformation happens in `R/02_harmoniza.R`.
 
 ---
 
-## 🙏 Acknowledgements
+## Conventions
 
-We thank the **Brazilian Ministry of Health** and the **Instituto Brasileiro de Geografia e Estatística (IBGE)** for maintaining the public availability of the Vigitel, PNS, and PNAD-TIC microdata, and the reviewers across multiple peer-review rounds for substantive methodological corrections that materially improved this work.
+- **Sign:** Δ = Vigitel − PNS, in every table and figure, without exception.
+- **Residual:** what remains of the gap after non-coverage is called "residual",
+  never "mode effect" — mode is a hypothesis discussed in the text, not a column
+  label. It jointly absorbs mode of collection, self-report, instrument
+  differences, non-response and weight calibration; this design cannot separate
+  them.
+- Code comments in Portuguese; object and function names in English.
+- Every path through `here::here()`; never `setwd()`.
+- Fixed seed (20260803) everywhere randomness enters.
 
 ---
 
-<div align="center">
+## Layout
 
-**🇧🇷 Made in Brazil · Open Science · Reproducible Research 🇧🇷**
+```
+R/              pipeline scripts (00–13) + the *_en.R English variants
+R/_arquivo_v1/  earlier draft of these scripts, kept for provenance
+tools/          docx translation script and its PT→EN dictionary
+output/         tables, figures, supplement and logs (committed)
+manuscript/     manuscript drafts and the companion presentation
+archive_v1/     the three-component 2006–2023 design published here until May 2026
+data/           harmonised objects (git-ignored)
+data-raw/       original microdata (git-ignored)
+```
 
-</div>
+## Licence and citation
+
+Code and outputs released under the [MIT licence](LICENSE). Citation metadata in
+[`CITATION.cff`](CITATION.cff) and [`codemeta.json`](codemeta.json).
+
+The Portuguese version of this README is in [README.pt-BR.md](README.pt-BR.md).
+The design published here until May 2026 — three components, 2006–2023 — is kept
+in [`archive_v1/`](archive_v1/).

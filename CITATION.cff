@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 title: >-
-  Coverage, representativeness, and selection bias in telephone-based health
-  surveillance during the decline of landline telephony — analytical pipeline
+  Landline non-coverage bias in Vigitel estimates: partition of the gap against
+  the PNS 2019 and sampling-frame simulation — analytical pipeline
 message: >-
   If you use this software in your research, please cite the associated
   manuscript and this dataset.
@@ -25,15 +25,16 @@ authors:
     affiliation: Hospital Israelita Albert Einstein – PROADI-SUS
 identifiers:
   - type: url
-    value: https://github.com/audencioVictor/vigitel-coverage-bias
+    value: https://github.com/Audency/vigitel-coverage-bias-brazil
   - type: doi
     value: 10.5281/zenodo.PENDING
 abstract: >-
-  Reproducible R pipeline (single-script) for the methodological study
-  evaluating coverage, representativeness, and selection bias in Brazil's
-  telephone-based health surveillance system (Vigitel) compared to the
-  National Health Survey (PNS), using the Fairlie 2005 decomposition,
-  response propensity modelling, and ADEMP simulation framework.
+  Reproducible R pipeline for the methodological study quantifying the landline
+  non-coverage bias of Brazil's telephone-based health surveillance system
+  (Vigitel) against the National Health Survey (PNS) 2019, partitioning the
+  prevalence gap into a non-coverage component and a residual, simulating five
+  sampling-frame scenarios under the ADEMP framework, and validating the
+  prediction against the real 2023 transition to a dual frame.
 keywords:
   - public-health
   - surveillance
@@ -43,17 +44,18 @@ keywords:
   - Vigitel
   - PNS
   - Brazil
-  - Fairlie-decomposition
+  - non-coverage-bias
+  - dual-frame
   - ADEMP
 license: MIT
-version: '0.9'
-date-released: '2026-05-07'
+version: '2.0'
+date-released: '2026-08-31'
 references:
   - type: article
     title: >-
-      Coverage, representativeness, and selection bias in telephone-based
-      health surveillance during the decline of landline telephony: a
-      Brazilian case study with implications for the Americas
+      Landline non-coverage bias in Vigitel estimates: partition of the gap
+      against the National Health Survey 2019 and simulation of sampling-frame
+      scenarios
     authors:
       - family-names: Victor
         given-names: Audêncio
@@ -66,5 +68,4 @@ references:
       - family-names: Larissa Duim
         given-names: Étienne
     year: 2026
-    journal: BMC Public Health
-    notes: Submitted
+    notes: Unpublished manuscript, in preparation
